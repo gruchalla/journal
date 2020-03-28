@@ -2,7 +2,6 @@ permalink:           pretty
 
 
 # Setup
-remote-theme:        poole/lanyon
 title:               COVID-19  
 tagline:             'A Pandemic Journal'
 description:         'A person journal documenting the COVID-19 pandemic.'
@@ -19,4 +18,3 @@ author:
 version:             1.0.0
 
 plugins: [jekyll-paginate]
-theme: jekyll-theme-slate
