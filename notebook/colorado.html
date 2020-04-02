@@ -20,8 +20,6 @@ body {
 div.tooltip {
     position: absolute;
     text-align: center;
-    width: 260px;
-    height: 56px;
     padding: 2px;
     font: 12px sans-serif;
     background: #333;
@@ -30,11 +28,23 @@ div.tooltip {
     pointer-events: none;
 }
 
+.outline {
+  fill: none;
+  stroke: black;
+  stroke-width: 3px;
+}
+  
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
 .label {
   fill: #fff;
   font-size: 20px;
 }
-.sublabel {
+.sublabel { 
   fill: #fff;
   font-size: 5px;
 }
@@ -47,4 +57,11 @@ div.tooltip {
   pointer-events: none;
 }
 
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.25;
+  shape-rendering: crispEdges;
+}
+
 </style>
+
