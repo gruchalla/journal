@@ -89,7 +89,7 @@
             //.datum(data.filter(function(d) { return d.Deaths > 0; }))
             .datum(data)
             .attr("stroke", "white")
-            .attr("fill", "black")
+            .attr("fill", "darkgray")
             .attr("d", deaths);
 
         svg.append("g")
@@ -156,7 +156,7 @@
             .attr("y", y.range()[1]+60)
             .attr("width", 15)
             .attr("height", 15)
-            .style("fill", "black");
+            .style("fill", "darkgray");
         svg.append("text")
             .attr("x", x.range()[0])
             .attr("y", y.range()[1]+72)

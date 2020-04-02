@@ -5,8 +5,8 @@
         function compute_moving_averages(data, window) {
             var result={}
             var avg = data.map(function(d, i) {
-                var si = Math.max(0,i-window);
-                var ei = i;
+                var si = Math.max(0,(i+1)-window);
+                var ei = i+1;
 
                 d["C_avg"] = d3.sum(data.slice(si,ei), function(x) { return x.C_delta; })/window;
                 d["H_avg"] = d3.sum(data.slice(si,ei), function(x) { return x.H_delta; })/window;
@@ -23,6 +23,8 @@
         data = JSON.parse(argList[1]);
 
         compute_moving_averages(data, 5);
+
+        console.log(data);
         
         data.forEach(function(d) {
             d.Date = d3.timeParse("%m/%d/%y")(d.Date);
@@ -47,9 +49,6 @@
             .domain(["C","H","D"])
             .rangeRound([0,x0.bandwidth()])
             .padding(0.15);
-        var x = d3.scaleLinear()
-            .range(d3.extent(data, function(d) { return x0(d.Date) + x0.bandwidth()/2; }))
-            .domain(d3.extent(data, function(d) { return d.Date; }));
 
         var dy = d3.scaleLog().range([height, margin.bottom])
             .domain([1, d3.max(data, function(d) { return Math.pow(10, Math.ceil(Math.log10(d3.max([d.C_delta, d.H_delta, d.D_delta])))); })]);;
@@ -112,7 +111,7 @@
             .datum(data.filter(function(d) { return d.C_avg >= 1; }))
             .attr("class", "outline")
             .attr("d", d3.line()
-                  .x(function(d) { return x(d.Date); })
+                  .x(function(d) { return x0(d.Date) + x1("C") + x1.bandwidth()/2; })
                   .y(function(d) { return dy(d.C_avg); }));
         svg.append("path")
             .datum(data.filter(function(d) { return d.C_avg >= 1; }))
@@ -120,14 +119,14 @@
             .attr("stroke-width", "2px")
             .attr("fill", "none")
             .attr("d", d3.line()
-                  .x(function(d) { return x(d.Date); })
+                  .x(function(d) { return x0(d.Date) + x1("C") + x1.bandwidth()/2; })
                   .y(function(d) { return dy(d.C_avg); }));
 
         svg.append("path")
             .datum(data.filter(function(d) { return d.H_avg >= 1; }))
             .attr("class", "outline")
             .attr("d", d3.line()
-                  .x(function(d) { return x(d.Date); })
+                  .x(function(d) { return x0(d.Date) + x1("H") + x1.bandwidth()/2; })
                   .y(function(d) { return dy(d.H_avg); }));
         svg.append("path")
             .datum(data.filter(function(d) { return d.H_avg >= 1; }))
@@ -135,14 +134,14 @@
             .attr("stroke-width", "2px")
             .attr("fill", "none")
             .attr("d", d3.line()
-                  .x(function(d) { return x(d.Date); })
+                  .x(function(d) { return x0(d.Date) + x1("H") + x1.bandwidth()/2; })
                   .y(function(d) { return dy(d.H_avg); }));
 
         svg.append("path")
             .datum(data.filter(function(d) { return d.D_avg >= 1; }))
             .attr("class", "outline")
             .attr("d", d3.line()
-                  .x(function(d) { return x(d.Date); })
+                  .x(function(d) { return x0(d.Date) + x1("D") + x1.bandwidth()/2; })
                   .y(function(d) { return dy(d.D_avg); }));
         svg.append("path")
             .datum(data.filter(function(d) { return d.D_avg >= 1; }))
@@ -150,7 +149,7 @@
             .attr("stroke-width", "2px")
             .attr("fill", "none")
             .attr("d", d3.line()
-                  .x(function(d) { return x(d.Date); })
+                  .x(function(d) { return x0(d.Date) + x1("D") + x1.bandwidth()/2; })
                   .y(function(d) { return dy(d.D_avg); }));
 
 
