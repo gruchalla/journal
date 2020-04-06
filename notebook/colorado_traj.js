@@ -5,8 +5,8 @@
         function compute_moving_averages(data, window) {
             var result={}
             var avg = data.map(function(d, i) {
-                var si = Math.max(0,i-window);
-                var ei = i;
+                var si = Math.max(0,(i+1)-window);
+                var ei = i+1;
 
                 d["C_avg"] = d3.sum(data.slice(si,ei), function(x) { return x.C_delta; })/window;
                 d["H_avg"] = d3.sum(data.slice(si,ei), function(x) { return x.H_delta; })/window;

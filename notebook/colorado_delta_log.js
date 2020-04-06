@@ -24,8 +24,6 @@
 
         compute_moving_averages(data, 5);
 
-        console.log(data);
-        
         data.forEach(function(d) {
             d.Date = d3.timeParse("%m/%d/%y")(d.Date);
         });
@@ -177,7 +175,7 @@
                   .tickFormat(""));
         // Legend 
         svg.append("rect")
-            .attr("x", x.range()[0]-30)
+            .attr("x", x0.range()[0]-30)
             .attr("y", dy.range()[1]+10)
             .attr("width", 125)
             .attr("height", 95)
@@ -185,13 +183,13 @@
             .style("stroke", "lightgray");
 
         svg.append("rect")
-            .attr("x", x.range()[0]-20)
+            .attr("x", x0.range()[0]-20)
             .attr("y", dy.range()[1]+20)
             .attr("width", 15)
             .attr("height", 15)
             .style("fill", "steelblue");
        svg.append("text")
-            .attr("x", x.range()[0])
+            .attr("x", x0.range()[0])
             .attr("y", dy.range()[1]+32)
             .attr("fill", "white")
             .style("text-anchor", "start")
@@ -199,13 +197,13 @@
             .text("Known Cases");
 
         svg.append("rect")
-            .attr("x", x.range()[0]-20)
+            .attr("x", x0.range()[0]-20)
             .attr("y", dy.range()[1]+40)
             .attr("width", 15)
             .attr("height", 15)
             .style("fill", "darkred");
         svg.append("text")
-            .attr("x", x.range()[0])
+            .attr("x", x0.range()[0])
             .attr("y", dy.range()[1]+52)
             .attr("fill", "white")
             .style("text-anchor", "start")
@@ -213,13 +211,13 @@
             .text("Hospitalizations");
 
         svg.append("rect")
-            .attr("x", x.range()[0]-20)
+            .attr("x", x0.range()[0]-20)
             .attr("y", dy.range()[1]+60)
             .attr("width", 15)
             .attr("height", 15)
             .style("fill", "darkgray");
         svg.append("text")
-            .attr("x", x.range()[0])
+            .attr("x", x0.range()[0])
             .attr("y", dy.range()[1]+72)
             .attr("fill", "white")
             .style("text-anchor", "start")
@@ -227,14 +225,14 @@
             .text("Deaths");
 
         svg.append("rect")
-            .attr("x", x.range()[0]-20)
+            .attr("x", x0.range()[0]-20)
             .attr("y", dy.range()[1]+87)
             .attr("width", 15)
             .attr("height", 2)
             .style("fill", "white")
             .style("stroke", "black");
         svg.append("text")
-            .attr("x", x.range()[0])
+            .attr("x", x0.range()[0])
             .attr("y", dy.range()[1]+92)
             .attr("fill", "white")
             .style("text-anchor", "start")
