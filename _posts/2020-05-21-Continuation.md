@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Continuation
-cases: 23,191
-hospital: 4,037
-deaths: 1,310
+cases: 23191
+hospital: 4037
+deaths: 1310
 cdphe: https://gruchalla.github.io/journal/images/cdphe_05_21_2020.png
 ---
 
